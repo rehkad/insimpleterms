@@ -1,0 +1,13 @@
+import openai
+
+openai.api_key = "YOUR_API_KEY"
+
+def generate_simple_explanation(input):
+    prompt = f"Explain '{input}' in simple terms"
+    response = openai.Completion.create(engine="text-davinci-002", prompt=prompt, max_tokens=1024, n=1, stop=None, temperature=0.5)
+    simple_explanation = response['choices'][0]['text']
+    return simple_explanation
+
+input = input("Enter a topic to explain in simple terms: ")
+simple_explanation = generate_simple_explanation(input)
+print(simple_explanation)
